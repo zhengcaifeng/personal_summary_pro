@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /* function add() {
+        var num = 0
+        return function () {
+          return num++
+        }
+      }
+      let a = add()
+      console.log(a())
+      console.log(a())
+      console.log(a()) */
+
+      function classone() {
+        let arr = []
+        let obj = {
+          add: function () {
+            arr = arr.concat([...arguments])
+            console.log(arr)
+          },
+          minus: function (name) {
+            let idx = arr.indexOf(name)
+            arr.splice(idx, 1)
+            console.log(arr)
+          },
+        }
+        return obj
+      }
+      let cc = classone()
+      cc.add('张三')
+      cc.add('李四')
+      cc.minus('张三')
+
+      cc.add('bb', 'aa')
+
+      // classone().add('张三')
+      //  classone().add('李四')
+      //  classone().minus('张三')
+
+      //  classone().add('bb', 'aa')
+      //这样是不会形成闭包的
+    </script>
+  </body>
+</html>

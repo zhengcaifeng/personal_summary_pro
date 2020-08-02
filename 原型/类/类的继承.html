@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Animal {
+        constructor() {}
+        static get flag() {
+          return '动物'
+        }
+        eat() {
+          console.log('eat')
+        }
+      }
+
+      //Tiger
+      class Tiger extends Animal {
+        constructor() {
+          //使用this之前必须调用super
+          //this.a = 1
+          super() //相当于 Animal.call(this)
+        }
+        static getFlag() {
+          return super.flag //静态方法中的super指向父类
+        }
+        eat() {
+          super.eat() //super指向父类的原型
+        }
+      }
+      console.log(Tiger.getFlag())
+      let tiger = new Tiger()
+      tiger.eat()
+      console.log(tiger.a)
+    </script>
+  </body>
+</html>

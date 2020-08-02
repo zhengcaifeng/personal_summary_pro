@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //难点不太懂 async 和await 函数
+      async function f3() {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            console.log('111')
+            resolve() //这个必须要写 否则不会输出333
+          }, 3000)
+        })
+      }
+      function f5() {
+        console.log(66)
+        setTimeout(() => {
+          console.log('55')
+        }, 3000)
+      }
+
+      async function f4() {
+        console.log(222)
+        // var c = await f3()
+
+        await f5() //如果await后面的函数不是返回  new Promise执行的函数，就不会先执行
+        console.log(333)
+      }
+      f4()
+    </script>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1.硬绑定
+      /* var a = 0
+      function foo() {
+        console.log(this.a)
+      }
+      var obj = {
+        a: 2,
+      }
+      foo()
+      foo.call(obj)
+      foo.apply(obj)
+      foo.bind(obj)() */
+
+      //2.硬绑定中的一个变种
+      var a = 0
+      function foo() {
+        console.log(this.a)
+      }
+      var obj = {
+        a: 2,
+      }
+      var bar = function () {
+        foo.call(obj)
+      }
+      bar()
+      setTimeout(bar, 1)
+      bar.call(window)
+
+      //3.其他
+      /*  function fn(age) {
+        this.age = age
+        this.say = function () {
+          console.log(this)
+        }
+      }
+
+      fn.call(null, 18)
+      //4  数组中的forEach
+      function fn(el) {
+        console.log(el, this)
+      }
+      var obj = {
+        id: fn,
+      }
+      let arr = [1, 2, 3]
+      arr.forEach(fn) //函数中包含一个函数
+      arr.forEach(fn, obj) */
+    </script>
+  </body>
+</html>

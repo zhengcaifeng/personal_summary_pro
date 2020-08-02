@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1. 函数表达式实现
+      function test() {
+        var num = 0
+        function add() {
+          num++
+          console.log(num)
+        }
+        return add
+      }
+      let add = test()
+      add()
+      add()
+      add()
+
+      //2.闭包对象字面量
+
+      function test() {
+        var num = 10
+        let compute = {
+          num: 1,
+          add: function () {
+            console.log(++num)
+          },
+          minus: function () {
+            console.log(--num)
+          },
+        }
+        return compute
+      }
+      let compute = test()
+      compute.add()
+      compute.add()
+      compute.add()
+      compute.minus()
+
+      // 3、构造函数实现闭包变量私有化
+      function Compute() {
+        var num = 0
+        this.add = function () {
+          console.log(++num)
+        }
+        this.minus = function () {
+          console.log(--num)
+        }
+        //return this 如果返回基本数据类型不行，引用类型会报错，
+      }
+      let c = new Compute()
+      c.add()
+      c.add()
+      c.add()
+      c.minus()
+
+      // 构造函数的闭包，是隐式的return this
+    </script>
+  </body>
+</html>

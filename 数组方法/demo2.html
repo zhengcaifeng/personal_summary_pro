@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 对象数组分类
+      let namelist = [
+        {
+          name: 'mark',
+          age: 15,
+          hair: 'long',
+        },
+        {
+          name: 'tuwen',
+          age: 16,
+          hair: 'short',
+        },
+        {
+          name: 'xiaoming',
+          age: 16,
+          hair: 'short',
+        },
+        {
+          name: 'lilei',
+          age: 15,
+          hair: 'short',
+        },
+        {
+          name: 'hanmei',
+          age: 17,
+          hair: 'long',
+        },
+      ]
+
+      let arr1 = namelist.filter((o) => o.age == 15)
+      let arr2 = namelist.filter((o) => o.age == 16)
+      let arr3 = namelist.filter((o) => o.age == 17)
+      console.log(arr1)
+      console.log(arr2)
+      console.log(arr3)
+    </script>
+  </body>
+</html>

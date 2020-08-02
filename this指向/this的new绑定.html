@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1.没有return 返回值(相当于return；或return this)  this指向构造函数new出来的对象实例
+      /*
+       let _this
+      function fn() {
+        console.log(this)
+        _this = this
+        return this
+      }
+
+      let s = new fn()
+      console.log(s === _this)
+      console.log(s.constructor === fn, '是不是直接继承')
+       */
+
+      //2.构造函数有return 一个对象，new后构造的实例就是return返回的对象
+      /*  
+      let _this
+      function fn2() {        
+        console.log(this)
+        _this = this
+        return {
+          age: 12,
+        }
+      }
+
+      var bar2 = new fn2()
+
+      console.log(bar2 === _this) */
+
+      //3例子：
+      // var person = {
+      //   fav: function () {
+      //     person._this = this
+      //     console.log(this)
+      //   },
+      // }
+
+      // let p = new person.fav()
+      // console.log(p)
+    </script>
+  </body>
+</html>

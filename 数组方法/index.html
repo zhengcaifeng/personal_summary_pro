@@ -1,0 +1,51 @@
+arr.splice(0,1) 从0位开始，删除1项
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 判断一个数是否在数组里面
+
+      /*  let num = 5;
+          arr = [1, 2, 3, 4, 5]
+          for (let i = 0; i < arr.length; i++) {
+            let idx = arr.indexOf(num) //查找下标
+            if (indx !=== -1) {
+              console.log('说明存在')
+            }
+          } */
+
+      /*   for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === num) {
+              console.log('说明存在')
+            }
+          } */
+
+      /*  for (let i = 0; i < arr.length; i++) {
+         let obj = { value: '' }
+         obj.vale = arr[i]
+         if (obj.value) {
+           console.log('说明存在')
+         } else {
+           obj.value = arr[i]
+         }
+       } */
+
+      // 删除两个数组中id相同的对象
+
+      let arr = res.data
+      let arr1 = [...tableStorage]
+      arr = arr.filter((o) => {
+        let ids = arr1.map((v) => v.id)
+        return !ids.inculdes(o.id)
+      })
+
+      //对象数组去重
+    </script>
+  </body>
+</html>

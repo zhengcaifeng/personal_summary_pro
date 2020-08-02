@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /* function isNaN1(n) {
+        let a = Number(n) //因为NaN==NaN 返回false
+        if (a == 'NaN') {
+          return true
+        } else {
+          return false
+        }
+      }
+      console.log(isNaN1('abc')) */
+
+      //所以必须写出这样
+      function isNaN2(n) {
+        let a = Number(n) + ''
+        if (a == 'NaN') return true
+        return false
+      }
+      console.log(isNaN2('12'))
+    </script>
+  </body>
+</html>

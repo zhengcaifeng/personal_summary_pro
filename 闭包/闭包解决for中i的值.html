@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*   function test() {
+        var arr = []
+        c = 1
+        for (var i = 0; i < 10; i++) {
+          arr[i] = function () {
+            console.log(i + '')
+          }
+        }
+        return arr
+      }
+      let myarr = test()
+      console.log(myarr)
+      for (let j = 0; j < 10; i++) {
+        console.log(myarr[j])
+      } */
+
+      //解决方法一  立即执行
+
+      /* function test() {
+        for (var i = 0; i < 10; i++) {
+          ;(function () {
+            console.log(i + ' ')
+          })()
+        }
+      }
+      test() */
+
+      // 解决方法一 外部传参
+      /*   function test() {
+        var arr = []
+        for (var i = 0; i < 10; i++) {
+          arr[i] = function aaa(i) {
+            console.log(i + '')
+          }
+        }
+        return arr
+      }
+      let myarr = test()
+      for (let j = 0; j < 10; j++) {
+        myarr[j](j)
+      } */
+
+      //解决方法三 内部保存,最常用的方法
+
+      function test() {
+        var arr = []
+        for (var i = 0; i < 10; i++) {
+          ;(function (j) {
+            arr[j] = function () {
+              console.log(j + '')
+            }
+          })(i)
+        }
+        return arr
+      }
+      let myarr = test()
+      console.log(myarr)
+      for (let j = 0; j < 10; j++) {
+        myarr[j]()
+      }
+    </script>
+  </body>
+</html>

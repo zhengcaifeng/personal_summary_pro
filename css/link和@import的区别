@@ -1,0 +1,20 @@
+link 是html标签，还可以添加 其他属性  
+<link rel="stylesheet" href="" />
+
+rel  规定当前文档与被链接文档之间的关系。
+
+@import 是引入css的语法规则 ，只有导入样式的作用
+
+
+2.加载顺序  
+加载页面时，link标签引入的css被同时加载
+@import 引入的css将在页面加载完毕后被加载
+
+
+3.兼容性 
+link不存在兼容性问题
+@import 需要在ie5以上 才能识别
+
+4.dom的可控性
+link可以通过js操作dom,插入link标签改变样式
+由于dom方法是基于文档的，无法使用@import的方式插入样式

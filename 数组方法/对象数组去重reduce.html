@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
+
+      // initialValue,传递给reduce的初始值
+      //reduce中的回调函数必须有返回值必须有返回值
+
+      let person = [
+        { id: 0, name: '小明' },
+        { id: 1, name: '小张' },
+        { id: 2, name: '小李' },
+        { id: 3, name: '小孙' },
+        { id: 1, name: '小周' },
+        { id: 2, name: '小陈' },
+        { id: 6, name: '小张' },
+        { id: 7, name: '小李' },
+      ]
+
+      let obj = {}
+      person = person.reduce((cur, next) => {
+        obj[next.id] ? '' : (obj[next.id] = true && cur.push(next))
+        return cur
+      }, [])
+
+      console.log(person)
+    </script>
+  </body>
+</html>

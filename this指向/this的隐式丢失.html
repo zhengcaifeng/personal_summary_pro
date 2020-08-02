@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1.
+      /* 
+      var a = 0
+      function foo() {
+        console.log(this.a)
+      }
+      var obj = {
+        a: 1,
+        foo: foo,
+      }
+      var bar = obj.foo
+      bar() //0
+       */
+
+      //2.参数传递丢失
+
+      var a = 0
+      function foo() {
+        console.log(this.a)
+      }
+      function bar(fn) {
+        fn()
+      }
+      var obj = {
+        a: 1,
+        foo: foo,
+      }
+      bar(obj.foo)
+
+      //3.内置函数  setTimeout setInterval  严格和非严格下都是window
+
+      /* 
+      var a = 1
+      function foo() {
+        console.log(this.a)
+      }
+      var obj = {
+        a: 2,
+        foo: foo,
+      }
+      setTimeout(obj.foo, 100)
+      // setInterval(obj.foo, 100) 
+      */
+
+      //4.间接调用
+
+      /* function foo() {
+        console.log(this.a)
+      }
+      var a = 2
+      var obj = {
+        a: 3,
+        foo: foo,
+      }
+      obj.foo()
+      ;(obj.foo = obj.foo)()
+      var p = { a: 4 }
+      ;(p.foo = obj.foo)()
+      p.foo = obj.foo
+      p.foo()
+      ;(false || obj.foo)()
+      ;(1, obj.foo)() */
+    </script>
+  </body>
+</html>

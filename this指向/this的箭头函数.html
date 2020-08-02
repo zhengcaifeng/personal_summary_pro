@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1. 箭头函数的this，实际是没有自己的this，所以不能用作构造函数
+      //取决于定义时的所处的环境，一旦确定不会改变
+
+      /*   function foo() {
+         setTimeout(() => {
+           console.log(this)
+         }, 100)
+       }
+       foo.call({ id: 12 }) */
+
+      /*  function Timer() {
+        this.s1 = 0
+        this.s2 = 0
+        setInterval(() => {
+          this.s1++
+        }, 1000)
+        setInterval(function () {
+          this.s2++
+        }, 1000)
+      }
+      var time = new Timer()
+      setTimeout(() => {
+        console.log('s1', time.s1)
+      }, 3100)
+      setTimeout(() => {
+        console.log('s2', time.s2)
+      }, 3100) */
+
+      //2.没有自己的this
+      function foo() {
+        return () => {
+          return () => {
+            return () => {
+              console.log(this.id)
+            }
+          }
+        }
+      }
+      let id = '1234'
+      foo()()()()
+      let f = foo.call({ id: '456' })
+      f()()()
+      var t1 = f.call({ id: 789 })()()()
+
+      //2.不可以当构造函数，否则会报错
+
+      //3.定时器中的箭头函数
+
+      //不适用用this的
+      //1.定义对象的方法，且方法里面有this,因为对象不构成单独的作用域
+
+      /* const cat = {
+         lives: 9,
+         jumps: () => {
+           this.lives--
+         },
+       }
+       cat.jumps()
+       console.log(cat.lives)
+       */
+
+      //2.需要动态this的时候,这时如果是箭头函数就指向全局了
+
+      /* var button = document.getElementById('press')
+       button.addEventListener('click', () => {
+         this.classList.toggle('on') */
+
+      //3.箭头函数没有自己的this,所以不能用作构造函数
+      // var handler = {
+      //   id: '123456',
+      //   init: function () {
+      //     // let _this = this
+      //     document.addEventListener(
+      //       'click',
+      //       (event) => {
+      //         console.log(this)
+      //         this.doSomething(event.type)
+      //       },
+      //       false
+      //     )
+      //   },
+      //   doSomething: function (type) {
+      //     console.log('handling' + type + 'for' + this.id)
+      //   },
+      // }
+      // handler.init()
+    </script>
+  </body>
+</html>

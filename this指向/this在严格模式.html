@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1.严格模式下 独立调用指向undefined
+      /* function fn() {
+        'use strict'
+        console.log(this)
+      }
+      fn() */
+
+      //2.严格模式下 call，apply 传什么是什么
+      /*  var color = 'green'
+      var obj = {
+        color: 'red',
+      }
+      function showColor() {
+        'use strict'
+        console.log(this)
+        console.log(this.color)
+      }
+      showColor.apply(null) */
+    </script>
+  </body>
+</html>

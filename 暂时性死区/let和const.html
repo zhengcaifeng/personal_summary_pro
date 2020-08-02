@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //题一
+      /*  {
+         let a = 1
+         var b = 2
+       }
+
+       console.log(b)
+       console.log(a) */
+
+      //题二：
+      /*  for (let i = 0; i < 10; i++) {
+         console.log(i)
+       }
+       console.log(i, '循环外') */
+
+      //题三：
+      // for (var i = 0; i < 10; i++) {
+      //   console.log(i)
+      // }
+      // console.log(i, '循环外')
+
+      //题四：
+      /* var a = []
+      for (var i = 0; i < 10; i++) {
+        a[i] = function () {
+          console.log(i)
+        }
+      }
+      a[6]() */
+
+      //题五：
+      /* 
+      var a = []
+      for (let i = 0; i < 10; i++) {
+        a[i] = function () {
+          console.log(i)
+        }
+      }
+      a[6]()
+         */
+
+      // 答案：
+      /*
+       1.2    defined  //let 声明的变量只在它所在的代码块有效
+       2. 1-9 defined
+       3.1-9  10
+       4.10  //访问的全局的i
+       5.6  //声明的变量在块集作用域中有效，
+
+
+       */
+    </script>
+  </body>
+</html>

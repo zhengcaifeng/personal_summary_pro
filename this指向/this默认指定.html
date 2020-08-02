@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1.全局调用
+      /*
+      console.log(this)
+      */
+
+      //2.独立调用
+      /*
+      function fn() {
+        console.log(this)
+      }
+      */
+
+      //3.被嵌套的函数独立调用时，this默认指向window
+      /*
+       var a = 0
+       var obj = {
+         a: 2,
+         foo: function () {
+           // var that = this //解决方式
+           function test() {
+             console.log(this.a)
+           }
+         },
+       }
+       obj.foo() //winodw
+       */
+
+      //4.IIFE 自执行函数
+      /*
+      var a = 10
+      function foo() {
+        // ;(function test() {
+        //   console.log(this.a)
+        // })()
+
+        ;(function test(that) {
+          console.log(that.a)
+        })(this)
+      }
+
+      var obj = {
+        a: 2,
+        foo: foo,
+      }
+      obj.foo() //window
+      */
+
+      //5.闭包默认指向window
+
+      /* var a = 0
+      var obj = {
+        a: 2,
+        foo: function () {
+          // var _this = this  解决方式
+          return function () {
+            return this.a
+          }
+        },
+      }
+      var fn = obj.foo()
+      console.log(fn()) */
+
+      //6. 有documnet 时this的指向
+      function fn() {
+        console.log(this)
+      }
+      document.onclick = fn //documnet
+    </script>
+  </body>
+</html>

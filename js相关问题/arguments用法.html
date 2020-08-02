@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //递归n求和
+
+      /*  function sum(n) {
+        if (n == 0) {
+          return n
+        } else {
+          return n + arguments.callee(n - 1)
+        }
+      }
+      console.log(sum(5))*/
+      /*
+      var total = (function (n) {
+        if (n == 1) return 1
+        return n * arguments.callee(n - 1)
+      })(5)
+      console.log(total) */
+
+      //2.形参和实参数量
+
+      /* function test(a, b, c) {
+        console.log(test.length)
+        console.log(arguments.callee.length)
+        console.log(arguments.length)
+      }
+      test(1, 2) */
+      //3,3,2
+
+      //3.caller  返回当前被调用函数的函数引用，在use strict 下报错
+      /*  function test2() {
+        console.log(test2.caller)
+      }
+      function test1() {
+        test2()
+      }
+      test1() */
+
+      //4 .函数的形参和实参是一一对应关系
+      function test(x, y, z) {
+        arguments[2] = 9
+        console.log(z)
+        y = 4
+        console.log(arguments[1])
+      }
+
+      test(1, 2, 3)
+      console.log(y, 'yyy')
+    </script>
+  </body>
+</html>

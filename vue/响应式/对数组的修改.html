@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //通过对象来设置数组
+
+      function DataArr() {
+        let _val = null
+        let _arr = []
+        Object.defineProperty(this, 'val', {
+          get() {
+            return _val
+          },
+          set(newVal) {
+            _val = newVal
+            _arr.push({ value: _val })
+          },
+        })
+
+        this.getArr = function () {
+          return _arr
+        }
+      }
+      DataArr()
+
+      let d = new DataArr()
+      d.val = 1
+      d.val = 2
+      console.log(d.getArr())
+    </script>
+  </body>
+</html>

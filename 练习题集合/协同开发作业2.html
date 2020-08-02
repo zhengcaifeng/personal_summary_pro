@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*    var inteFb = (function () {
+        var fie = function () {}
+        var fun1 = function () {}
+        var fun3 = function () {}
+        return {
+          fie,
+          fun2,
+          fun3,
+        }
+      })()
+ */
+      window.onload = function () {
+        inteFull()
+      }
+      var inteFull = function () {
+        console.log(inteFb(10))
+        console.log(inteDiv(100))
+      }
+
+      var inteFb = (function () {
+        var fb = function (n) {
+          if (n == 0) return 0
+          if (n <= 2) return 1
+          return fb(n - 1) + fb(n - 2)
+        }
+        return fb
+      })()
+
+      var inteDiv = (function () {
+        var div = function (n) {
+          let arr = []
+          for (let i = 0; i < n + 1; i++) {
+            if (n % 3 || n % 5 || n % 7) {
+              arr.push(i)
+            }
+          }
+          return arr
+        }
+        return div
+      })()
+    </script>
+  </body>
+</html>

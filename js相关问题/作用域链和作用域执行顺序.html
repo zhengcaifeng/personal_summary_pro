@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // function test(a) {
+      //   d()
+      //   console.log(a)
+      //   var a = 1
+      //   console.log(a)
+      //   function a() {}
+      //   console.log(a)
+      //   var b = function () {
+      //     console.log(1)
+      //   }
+      //   console.log(b)
+      //   function d() {
+      //     console.log('d')
+      //   }
+      // }
+      // test(2)
+
+      //6步，
+      // 1.形 2变 3实赋，4函申 5执行 6=赋值
+
+      //声明形参- 变量声明，-- 实参赋值形参 -函数申明  --执行-赋值
+
+      //为什么报错
+      function b() {
+        a
+      }
+
+      b()
+      console.log(a)
+
+      function test1() {
+        function test2() {
+          a = 3
+        }
+        var a = 1
+
+        return test2
+      }
+      var c = 3
+      var test3 = test1()
+      test3()
+      console.log(a)
+    </script>
+  </body>
+</html>

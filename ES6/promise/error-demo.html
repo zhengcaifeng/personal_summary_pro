@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /* 一、
+       // 同步回调函数
+
+       var arr = [1, 2, 3]
+       arr.forEach((item) => console.log(item))
+       console.log('foreacht')
+
+       // 异步回调函数
+       setTimeout(function () {
+         console.log('定时器')
+       }, 0)
+       console.log('11')
+
+
+       */
+
+      /* 二、js中error处理 */
+      //  ReferenceError  引用的变量
+      //  TypeError  数据类型错误
+      //  Rangeerror  数据值不在其所允许的范围内
+      //  SyntaxError  语法错误
+
+      /* 三、 // 错误处理
+       try{
+
+       }catch(error){
+        console.log(error)
+       }
+      console.log('我还能执行 ')
+       */
+
+      //函数内部如果有错误，用try-catch去捕获错误 ，后面的代码会继续执行
+
+      function something() {
+        if (Date.now() % 2 === 1) {
+          console.log('奇数可以执行')
+        } else {
+          //捕获错误
+          throw new Error('偶数不执行')
+        }
+      }
+      //抛出错误
+      try {
+        something()
+      } catch (error) {
+        console.log('错误被我抓到了')
+      }
+      console.log(0)
+    </script>
+  </body>
+</html>

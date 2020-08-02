@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 判断数据类型
+      var a = []
+      console.log(a instanceof Array)
+      console.log(a.constructor)
+      let str = Object.prototype.toString.call(a) //最好使用
+
+      //  a上有toString() ,想让他调用对象上的toString,就可以用call
+
+      if (str == '[object Array]') {
+        console.log('是数组')
+      }
+    </script>
+  </body>
+</html>

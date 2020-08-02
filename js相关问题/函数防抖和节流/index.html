@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      div {
+        /* height: 1000px; */
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <input type="text" id="input" />
+    <script>
+      //是否执行第一次延时 ，true 执行第一攷延时
+      // function debounce(fn, time, trigglenow) {
+      //   var t = null
+
+      //   return function () {
+      //     var _self = this
+      //     args = arguments //返回的函数是有参数传递，所以需要保存arguments
+      //     if (t) {
+      //     }
+      //   }
+      // }
+
+      //首先第一次执行的时间为准，
+      // 到了时间后就执行
+      function throttle(fun, delay) {
+        let beginTime = 0
+        return function () {
+          let _this = this,
+            args = arguments
+
+          let cur = new Date().getTime()
+          console.log(cur - beginTime)
+
+          if (cur - beginTime >= delay) {
+            fun.apply(_this, args)
+            beginTime = cur
+          }
+        }
+      }
+
+      var Input = document.getElementById('input')
+
+      function check() {
+        val = this.value
+
+        if (val.length < 6) {
+          console.log('Invalid length')
+        } else {
+          console.log('success')
+        }
+      }
+      Input.onkeyup = throttle(check, 3000)
+      // function scroll() {
+      //   console.log('滚动了')
+      // }
+      // window.addEventListener('scroll', throttle(scroll, 3000))
+    </script>
+  </body>
+</html>

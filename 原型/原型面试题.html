@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*  function Teacher() {
+        this.name='张三'
+      }
+      var teacher = new Teacher()
+      teacher.__proto__.succesee = {
+        alibaba: 24,
+        tengxun: 10,
+      }
+      function Student() {}
+      Student.prototype = teacher
+      var stu = new Student()
+      stu.succesee.baidu = 12
+      stu.succesee.alibaba=25
+      console.log(teacher, stu)
+
+      //引用值是可以更改添加的 */
+
+      /* function Teacher() {}
+      Teacher.prototype.age = 12
+      var t1 = new Teacher()
+      function Student() {
+        this.num = 29
+      }
+      var stu = new Student()
+      Student.prototype = t1
+      console.log(stu.age) */
+
+      function Person() {
+        this.smoke = function () {
+          this.weight--
+        }
+      }
+      Person.prototype = {
+        weight: 130,
+      }
+      var p1 = new Person()
+      console.log(p1.smoke())
+      //undefined
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //在原型中的用法一,将构造函数的方法和属性扩充到现有对象上
+      /*  function Car() {
+        this.band = 'benz'
+        this.color = 'red'
+      }
+      var newCar = {}
+      var car1 = {
+        pailiang: 2,
+      }
+      Car.call(newCar, '大宗', 'yellow')
+      Car.apply(car1, ['bm', 'blue'])
+      console.log(newCar, car1) */
+
+      //原型中用法二，扩充方法或分类方法,用来扩充方法和属性，间接的把两个函数合并在一起
+
+      function Compute() {
+        this.plus = function (a, b) {
+          console.log(a + b)
+        }
+        this.minus = function (a, b) {
+          console.log(a + b)
+        }
+      }
+      function Fullcompute() {
+        Compute.call(this)
+        this.multiply = function (a, b) {
+          console.log(a * b)
+        }
+      }
+      var obj = new Fullcompute()
+      obj.plus(1, 3)
+    </script>
+  </body>
+</html>

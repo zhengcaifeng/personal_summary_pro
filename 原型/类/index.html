@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+
+           1.判断一个属性是实例上的属性，还是自身的属性 hasOwnProperty
+
+           */
+
+      /*
+            //一，原型链
+          function Animal() {
+            this.type = '哺乳类'
+          }
+
+          Animal.prototype.eat = function () {
+            console.log('eat')
+          }
+          let animal = new Animal()
+          let animal = new Animal()
+          console.log(animal.hasOwnProperty('eat'), '===')
+          console.log(animal.__proto__.hasOwnProperty('type'))
+          console.log(animal.__proto__ === Animal.prototype)
+
+          console.log(animal.constructor == animal.__proto__.constructor)
+          console.log(animal.constructor === Animal.prototype.constructor)
+          console.log(animal.__proto__.__proto__.constructor)
+
+          */
+
+      //   二、可以被继承，不能实例化
+      function Animal() {
+        if (new.target === Animal) {
+          throw new Error('Animal可以被继承，不能实例化')
+        }
+        this.type = '哺乳类'
+      }
+      Animal.prototype.eat = function () {
+        console.log('eat')
+      }
+      function Tiger() {
+        Animal.apply(this) //继承私有属性
+      }
+      // 继承公有属性
+      //1.
+      Tiger.prototype = Object.create(Animal.prototype, {
+        constructor: { value: Tiger },
+      })
+
+      //2.
+      // Tiger.prototype = create(Animal.prototype)
+      // Tiger.prototype.constructor = Tiger
+
+      //3.
+      //Tiger.prototype.__proto__ = Animal.prototype
+      //Object.setPrototypeOf(Tiger.prototype, Animal.prototype)
+
+      let tiger = new Tiger()
+      console.log(tiger.constructor, '66')
+      // console.log(tiger.type)
+      tiger.eat()
+
+      //三、手动实现一个object.create
+      //  create实现的功能是,创建一个实例或对象，这个实例的__proto__指向传入的值
+
+      function create(parentprototype) {
+        function Fn() {}
+        Fn.prototype = parentprototype
+        let fn = new Fn()
+        fn.constructor = Tiger
+        return new Fn()
+      }
+    </script>
+  </body>
+</html>

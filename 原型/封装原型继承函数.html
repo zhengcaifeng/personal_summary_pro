@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /* 
+        属性继承，和原型方法继承
+      */
+
+      //1.第一种继承  原型链继承法
+      /*   function Person(love){
+            this.love=love
+         }
+         Person.prototype.eat=function(){
+           console.log('eat')
+         }
+         function Student(age){
+           Person.apply(this)
+           this.age=age
+         }
+         Student.prototype.__proto__=Person.prototype
+         Object.setPrototypeOf(Student.prototype,Person.prototype) */
+
+      //2. 缺陷： 构造函数只能被继承不能实例化
+      /*  function Person() {
+          // if (new.target === Person) {
+          //   throw '不能实例化我'
+          // }
+          this.name = '张三'
+        }
+        Person.prototype.eat = function () {
+          console.log('eat')
+        }
+        let p1 = new Person()
+        function Student() {}
+        Student.prototype = p1
+        Student.prototype.constructor = Student */
+
+      //3、创建一个新的对象,弊端需要写属性的一些特性
+      function Person(love) {
+        this.love = love
+      }
+
+      Person.prototype.eat = function () {
+        console.log('eat')
+      }
+      function Student(age) {
+        this.age = age
+      }
+
+      Student.prototype = Object.create(Person.prototype, {
+        love: { value: '睡觉' },
+        constructor: {
+          value: Student,
+        },
+      })
+
+      // 4、手动实现create实现Object.create函数
+
+      /*  
+       function create(child, parent) {
+        let Fun = function () {}
+        Fn.prototype = parent.prototype
+        Fn.prototype.constructor = child
+        return new Fun()
+      }
+      create(Student, Person)
+      Student.prototype = create(Student, Person) 
+      */
+
+      // 5. 封装函数实现继承
+      function extend(Child, Parent) {
+        let Fun = function () {}
+        Fun.prototype = Parent.prototype
+        Child.prototype = new Fun()
+        Child.prototype.constructor = Child
+        Child.prototype.super_class = Parent //设置继承源，希望能找到真正继承的那个继承对象，记录一下
+      }
+
+      //6.使用闭包封装成企业级使用
+      let inherit = (function () {
+        let Fun = function () {}
+        return function (Child, Parent) {
+          Fun.prototype = Parent.prototype
+          Child.prototype = new Fun()
+          Child.prototype.constructor = Child
+          Child.prototype.super_class = Parent
+        }
+      })()
+    </script>
+  </body>
+</html>

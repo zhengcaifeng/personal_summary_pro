@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <button id="btn">按钮</button>
+    </div>
+  </body>
+  <script>
+    var btn = document.getElementById('btn')
+    btn.onclick = function () {
+      //创建ajax对象
+      var xhr = new XMLHttpRequest()
+      //设置回调函数
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          console.log(xhr)
+          console.log(xhr.reponseText) //打印返回来的数据
+        }
+      }
+      //  请求方式和请求地址
+      xhr.open('get', 'demo1.php')
+
+      //设置请求头参数 xhr.setRequestHeader()
+      //发送请求
+      //判断与处理数据
+
+      xhr.send()
+    }
+
+    btn.onclcik = function () {
+      var xhr = new XMLHttpRequest()
+      if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest()
+      } else {
+        xhr = new ActiveXObject()
+      }
+    }
+
+    document.getELementById('btn').onclcik = function () {
+      var xhr = new XMLHttpRequest()
+      if (xhr.onreadystatechange == 4 && xhr.state == 200) {
+        console.log(xhr.reponseText)
+      }
+    }
+  </script>
+</html>

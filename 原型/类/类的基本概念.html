@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+      </head>
+      <body>
+        <script>
+          class Animal {
+            constructor() {
+              ;(this.type = '哺乳类'), (this._age = 100)
+            }
+            get age() {
+              return this._age
+            }
+            set age(val) {
+              this._age = val
+            }
+            a = 1 //es7中支持，在node中不适用，属性属于实例上的
+            static get c() {
+              //类的静态属性
+              return '动物'
+            }
+            static d() {
+              //类的静态方法
+              return '动物1'
+            }
+            get b() {
+              //属性属于当前原型上的
+              return 100
+            }
+            eat() {
+              //这里申明的变量都是当前原型上的变量
+              console.log('eat')
+            }
+          }
+          let animal = new Animal()
+          console.log(animal.hasOwnProperty('b'))
+          console.log(Animal.c, '静态属性')
+          console.log(Animal.d(), '静态方法')
+          //get和set中值需要公有一个值，只能在constructor中建一个公有的_age
+          console.log(animal.age)
+          animal.age = 200
+          console.log(animal.age)
+        </script>
+      </body>
+    </html>
+  </body>
+</html>

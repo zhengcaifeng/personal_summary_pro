@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //打印 年龄为zhansan姓名为zhansan收入为1.5的人买了一辆大宗牌red排量为1.2的车
+
+      //将两个函数的方法合并，在用apply绑定的时候，必须将传值枚举出来
+      /* function Person(opt) {
+        this.name = opt.name
+        this.age = opt.age
+        this.income = opt.income
+        Car.apply(this, [
+          opt.carInfo.color,
+          opt.carInfo.band,
+          opt.carInfo.displacement,
+        ])
+
+        this.say = function () {
+          console.log(
+            `年龄为${this.name}姓名为${this.name}收入为${
+              this.income
+            }的人${this.infor()}`
+          )
+        }
+      }
+      //function Car(opt{  改成这样就出错了，获取不到opt的值
+      function Car(color, band, displacement) {
+        this.color = color
+        this.band = band
+        this.displacement = displacement
+        this.infor = function () {
+          return `买了一辆${this.band}牌${this.color}排量为${this.displacement}的车`
+        }
+      }
+
+      var p1 = new Person({
+        name: 'zhansan',
+        age: 20,
+        income: 1.5,
+        carInfo: {
+          color: 'red',
+          displacement: 1.2,
+          band: '大宗',
+        },
+      })
+      p1.say() */
+
+      //方法二：  这个方法有问题
+      function Person(opt) {
+        this.name = opt.name
+        this.age = opt.age
+        this.income = opt.income
+        this.say = function () {
+          console.log(
+            `年龄为${this.name}姓名为${this.name}收入为${
+              this.income
+            }的人${this.infor(opt.carInfo)}`
+          )
+        }
+      }
+
+      function Car(color, band, displacement) {
+        this.color = color
+        this.band = band
+        this.displacement = displacement
+        this.infor = function () {
+          return `买了一辆${this.band}牌${this.color}排量为${this.displacement}的车`
+        }
+      }
+      var p1 = new Person({
+        name: 'zhansan',
+        age: 20,
+        income: 1.5,
+        carInfo: {
+          color: 'red',
+          displacement: 1.2,
+          band: '大宗',
+        },
+      })
+      Car.prototype = p1
+
+      p1.say()
+    </script>
+  </body>
+</html>

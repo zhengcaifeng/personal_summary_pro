@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+      </head>
+      <body>
+        <p>我是中国人</p>
+        <script>
+          function defineProperty() {
+            let obj = {}
+            Object.defineProperties(obj, {
+              a: {
+                get() {
+                  console.log('我在拿值')
+                },
+                set(newVal) {
+                  document.getElementsByTagName('p')[0].innerHTML = newVal
+                  console.log('我在设置')
+                },
+              },
+              b: {},
+            })
+            return obj
+          }
+          let o1 = defineProperty()
+          o1.a = 1
+          console.log(o1.a)
+
+          // writable   可写，
+          //enumerable   可枚举 用key获取可以value
+          //configurable  可配置可操作  delete obj.a   是否可删除
+
+          //get
+          //set
+
+          // value 和writable  与  get 和set不能一起使用
+
+          //数据劫持
+        </script>
+      </body>
+    </html>
+  </body>
+</html>

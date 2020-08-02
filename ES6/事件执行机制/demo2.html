@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*  setTimeout(() => {
+        console.log(0)
+      }, 0)
+
+      new Promise((resolve, reject) => {
+        console.log(1)
+        resolve()
+      })
+        .then(() => {
+          console.log(2)
+          new Promise((rsolve, reject) => {
+            console.log(3)
+            rsolve()
+          })
+            .then(() => {
+              console.log(4)
+            })
+            .then(() => {
+              console.log(5)
+            })
+          //返回 undefined
+        })
+        .then(() => {
+          console.log(6)
+        })
+
+      new Promise((resolve, reject) => {
+        console.log(7)
+        resolve()
+      }).then(() => {
+        console.log(8)
+      }) */
+
+      // 1,7,2,3,8,4,6,5,0
+
+      // then() 和resolve() 都是立即执行
+      //，当then执行完后，这个promise的状态就改变了，可以执行下一个then
+
+      //当遇到await的时候，阻塞后面的代码，去外部执行同步代码
+      // script start ,'async1 start','async2','promise1','script end','async1 end','promise2','setTimeout
+      //宏['setTimeout']
+      //微 ['promise2']''
+      /*     async function async1() {
+        console.log('async1 start')
+        await async2()
+        console.log('async1 end')
+      }
+      async function async2() {
+        console.log('async2')
+      }
+      console.log('script start')
+      setTimeout(function () {
+        console.log('setTimeout')
+      }, 0)
+      async1()
+      new Promise(function (resolve) {
+        console.log('promise1')
+        resolve()
+      }).then(function () {
+        console.log('promise2')
+      })
+      console.log('script end') */
+
+      //'start'，'Promise1-start'，'Promise1-end'，‘'end'’
+      //Promise1-resolve, 'Promise1-then1',Promise1-resolve,'Promise1-then2'
+      //'Promise2','Promise2-then1',Promise2,'Promise2-then2'
+    </script>
+  </body>
+</html>

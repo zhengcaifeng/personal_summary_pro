@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    //例1
+    //参数传递引用类型的值时，会把这个值在内存中的地址复制给一个局部变量，因此这个局部变量的变化会反映在函数外部
+    // function setName(obj) {
+    //   obj.name = 'Tom'
+    // }
+    // var person = new Object()
+    // setName(person)
+    // console.log(person.name)
+
+    //例2
+    //说明函数参数是按值来传递的,当在函数内部重写obj时，这个变量的引用就是一个局部对象了，在函数执行完毕后立即被销毁
+
+    function setName(obj) {
+      obj.name = 'timi'
+      obj = new Object()
+      obj.name = 'Angelia'
+      console.log(obj, '函数')
+    }
+    var person = { age: 10 }
+    setName(person)
+    console.log(person)
+  </script>
+</html>

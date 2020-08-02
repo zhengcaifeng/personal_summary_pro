@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // const obj = {
+      //   name: 'zhangsan',
+      //   son: {
+      //     first: 'apple',
+      //     second: 'banana',
+      //   },
+      //   arr: [1, 2, 3],
+      //   objarr: [
+      //     { id: 1, love: 'lucy' },
+      //     { id: 2, love: 'lili' },
+      //   ],
+      //   eat: function (eat) {
+      //     console.log(eat)
+      //   },
+      // }
+
+      // //  这些都是浅拷贝
+      // const newObj3 = { ...obj }
+      // const newObj1 = Objdect.assgin({}, obj)
+      // const newObj2 = JSON.parse(JSON.stringify(obj)) //fun类型是无法拷贝的
+
+      function deepClone(obj, hash) {
+        if (obj === null) return obj
+        if (obj instanceof Date) return obj
+        if (obj instanceof RegExp) return obj
+        if (!(typeof obj === 'object')) return obj
+        let newObj = new obj.constructor()
+        if (hash.get(obj)) return hash.get(obj)
+        hash.set(obj, newObj)
+
+        for (let key in obj) {
+          if (obj.hasOwnProperty(key)) {
+            newObj[key] = deepClone(obj[key], hash)
+          }
+        }
+        return newObj
+      }
+      obj.c = obj
+      obj.age = 10
+      let obj4 = deepClone(obj)
+      console.log(obj4)
+
+      // obj4.arr.push(4)
+      // obj4.objarr.push({ id: 3, love: 'xiaoming' })
+      // obj4.son.third = 'paire'
+      // obj4.eat('apple')
+      // obj.eat('11')
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //1.面一
+      /* 
+    var foo = 123
+    function print() {
+      this.foo = 345
+      console.log(foo)
+    }
+    new print()
+    print()
+ */
+      //2.面二
+      /* 
+    var Factory = function () {
+      this.a = 'a'
+      this.b = 'b'
+      this.c = {
+        a: 'a+',
+        b: () => {
+          console.log(this, 'this的值')
+          console.log(this.a)
+        },
+      }
+    }
+    let bar = new Factory()
+    console.log(bar.c.b())
+     */
+    </script>
+  </body>
+</html>
