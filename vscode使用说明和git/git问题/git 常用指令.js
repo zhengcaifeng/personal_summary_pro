@@ -32,6 +32,8 @@
 //合并指定分支到当前分支
 //git merge [branch]
 
-//https://www.jianshu.com/p/aee0813c30c5
+//error 报错  https://www.pianshen.com/article/8931930114/
 
+// git报错-fatal: HttpRequestException encountered.
 
+// 下载 下载安装git凭证管理器法  ，将git版本更新到最新版本
