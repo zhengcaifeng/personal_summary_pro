@@ -31,3 +31,7 @@
 
 //合并指定分支到当前分支
 //git merge [branch]
+
+//https://www.jianshu.com/p/aee0813c30c5
+
+
