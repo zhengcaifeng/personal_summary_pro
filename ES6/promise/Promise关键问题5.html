@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*   6.promise异常穿透
+      1>当使用promise的then链式调用时，可以在最后指定失败的回调
+      2>前面任何操作出了异常，都会传到最后失败的回调中处理
+      7.中断promsie链
+      1>当使用promise的then链式调用时，在中间中断，不在调用后面的回调函数
+      2>办法：在回调函数中返回一个pedding状态的promise对象  */
+
+      //实现穿透功能，并且可以省略，
+      // 实际上是在每个.then()中默认的失败回调函数中返回一个失败的结果
+      // throw reason  或返回  return Promise.reject(reason)
+      /*    new Promise((resolve, reject) => {
+        reject('aa')
+      })
+        .then(
+          (val) => {
+            console.log(val)
+            return 2
+          }
+          // (reason) => {
+          //   console.log('reason中的值', reason)
+          //   throw reason
+          // }
+        )
+        .then(
+          (val) => {
+            console.log('===', val)
+            return 3
+          }
+          // (reason) => {
+          //   console.log(reason)
+          //   return Promise.reject(reason)
+          // }
+        )
+        .catch((val) => {
+          console.log('catch中的val', val)
+        }) */
+
+      //中断promise返回一个pendding状态的promise
+      new Promise((resolve, reject) => {
+        resolve(1)
+      })
+        .then(
+          (val) => {
+            console.log('任务1的值', val)
+            // return Promise.resolve(2)
+            return new Promise()
+          },
+          (reason) => {}
+        )
+        .then(
+          (val) => {
+            console.log('任务2的值', val)
+          },
+          (reason) => {}
+        )
+    </script>
+  </body>
+</html>

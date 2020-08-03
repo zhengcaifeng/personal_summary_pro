@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <image
+      class=""
+      src="https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png"
+      mode="aspectFit|aspectFill|widthFix"
+      lazy-load="false"
+      binderror=""
+      bindload=""
+    >
+    </image> -->
+  </body>
+  <script>
+    function imgLoading(src) {
+      return new Promise((resolve, reject) => {
+        var image = new Image()
+        image.src = src
+        image.onload = () => {
+          resolve(image)
+        }
+        image.error = reject
+        document.body.appendChild(image)
+      })
+    }
+
+    let src =
+      'https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png'
+    imgLoading(src).then(
+      (image) => {
+        image.style.border = '2px solid red'
+      },
+      (error) => {}
+    )
+  </script>
+</html>

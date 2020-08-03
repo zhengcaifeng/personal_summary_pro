@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //  改变Promise状态和指定回调函数谁先谁后
+      //都可以
+
+      new Promise((resolve, reject) => {
+        setTimeout(function () {
+          resolve(1) //后改变的状态，（同时指定数据），异步执行回调函数
+        }, 100)
+      }).then(
+        //先指定回调函数，保存当前的指定函数
+        (val) => {},
+        (reason) => {}
+      )
+
+      // 先改变状态后指定回调函数的两种方法
+      new Promise((resove, reject) => {
+        resolve() //先改变状态，（同时指定数据）
+      }).then(
+        //后指定回调函数，异步执行回调函数
+        (val) => {},
+        (reason) => {}
+      )
+
+      let p = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve()
+        }, 10)
+      })
+
+      setTimeout(() => {
+        p.then(
+          (val) => {},
+          (reason) => {}
+        )
+      }, 100)
+    </script>
+  </body>
+</html>

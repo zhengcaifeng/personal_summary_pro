@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      new Promise((resolve, reject) => {
+        reject('aa')
+      }).then(
+        (val) => {},
+        (reason) => {
+          console.log('reason中的值', reason)
+          Promise.reject(3) //为什么报错
+          Promise.resolve(3) //为什么不报错
+        }
+      )
+    </script>
+  </body>
+</html>

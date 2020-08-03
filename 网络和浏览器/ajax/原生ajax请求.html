@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1.兼容
+      // 2.配置
+      // 3.发送
+      // 4.接收
+      let url =
+        'https://pics1.baidu.com/feed/b219ebc4b74543a9a12965de39668085b901146d.jpeg?token=9e519b0343453a42417f3bd68fc3531e'
+      var xhr
+      if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest()
+      } else {
+        xhr = new ActiveXObject('Microsoft.XMLHTTP')
+      }
+      // （93.02）
+      console.log(xhr.readyState) //0
+      xhr.open('GET', url, true)
+      //   xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencode')
+      //发送post请求时必须设置请求头，然后在发送
+      xhr.send()
+      console.log(xhr.readyState) //1建立连接
+      xhr.onreadyStatechange = function () {
+        console.log(xhr.readyState) //2,3,4
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          let data = JSON.parse(xhr.responseText)
+        }
+      }
+    </script>
+  </body>
+  ,
+</html>

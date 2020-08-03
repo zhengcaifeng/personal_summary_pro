@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // promise如何串联多个操作任务
+      // 1.promise的then()返回一个新的promise,可以看出then的链式调用
+      // 2.通过then的链式调用串连多个同步/异步任务
+
+      //如果有异步任务必须用promise包起来，才会依次执行
+
+      /*   new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log('执行异步任务1')
+          resolve(1)
+        }, 100)
+      })
+        .then(
+          (val) => {
+            console.log('执行异步任务1的结果', val)
+            setTimeout(() => {
+              console.log('异步任务2')
+            }, 100)
+          },
+          (reason) => {}
+        )
+        .then(
+          (val) => {
+            console.log('执行异步任务3', val)
+          },
+          (reason) => {}
+        ) */
+
+      /*     new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log('异步任务1')
+          resolve(1)
+        }, 10)
+      })
+        .then(
+          (val) => {
+            console.log('任务1的值', 1)
+            return new Promise((resolve, reject) => {
+              setTimeout(() => {
+                console.log('异步任务2')
+                resolve(2)//位置不同输出的结果不同
+              }, 1000)
+            })
+          },
+          (reason) => {}
+        )
+        .then((val) => {
+          console.log('任务2的值', val)
+        }) */
+
+      //改变promise的结果，必须在异步任务里面
+      /*    new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log('异步任务1')
+        }, 100)
+        resolve(1)
+      }).then((val) => {
+        console.log('异步任务1的值', val)
+      }) */
+
+      //.then（）后面的.then()执行的是失败回调还是成功回调，只和前一个.then()的结果返回值有关
+      new Promise((resolve, reject) => {
+        console.log(1)
+        reject(1)
+      })
+        .then(
+          (val) => {
+            console.log(val)
+          },
+          (reason) => {
+            console.log(reason)
+            return new Promise((resolve, reject) => {
+              resolve(2)
+            })
+          }
+        )
+        .then(
+          (val) => {
+            console.log('成功的回调', val)
+          },
+          (reason) => {
+            console.log('失败的回调', reason)
+          }
+        )
+    </script>
+  </body>
+</html>

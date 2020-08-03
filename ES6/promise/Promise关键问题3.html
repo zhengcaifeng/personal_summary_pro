@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //
+      // promise.then()返回的新的promise的结果状态由什么决定，
+      // 简单的说，有.then（）指定的回调函数执行的结果决定
+      //如果抛出异常，那返回的就是一个失败的promise,
+      // 如果返回的是一个非promise的值，那新的promise变为resolved,value就是这个函数的返回值
+      //如果返回的一个新的promise,由这个新的promise的结果决定
+      new Promise((resolve, reject) => {
+        // resolve(1)
+        reject(2)
+      })
+        .then(
+          (val) => {
+            console.log(val, 'val1')
+
+            // return 2    （没有写return 默认return undefined返回undefined）               //返会一个非promise就是成功，返回她的返回值
+            // return Promise.resolve(3)  //返回一个新的成功的promise 后面的then输出 value
+            //return Promise.reject(4)   //返回一个新的失败的promise  后面的then 输入reason
+          },
+          (reason) => {
+            console.log(reason, 'reason1') //2
+            return 3
+          }
+        )
+        .then(
+          (val) => {
+            console.log(val, 'val2') //undefine val2
+          },
+          (reason) => {
+            console.log(reason, 'reason2')
+          }
+        )
+    </script>
+  </body>
+</html>

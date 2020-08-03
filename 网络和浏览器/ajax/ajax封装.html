@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let $ = (function () {
+        var o = window.XMLHttpRequest
+          ? new XMLHttpRequest()
+          : new ActiveXObject('Microsoft.XMLHTTP')
+        if (!o) {
+          throw new Error('浏览器不支持异步发起http请求')
+        }
+        function formateDatas(obj) {
+          let str = ''
+          for (var key in obj) {
+            str += key + '=' + obj[key] + '&'
+          }
+          str = str.replace(/&$/, '')
+        }
+        function _doAjax(opt) {
+          var opt = opt || {},
+            url = opt.url,
+            async = opt.async || true,
+            success = opt.success || function () {},
+            error = opt.error || function () {},
+            complete = opt.complete || function () {},
+            data = formateDatas(opt.data) || null,
+            type = opt.type.toUpperCase() || 'GET'
+
+          if (!url) {
+            throw new Errow('url不存在')
+          }
+          o.open(type, url, async)
+
+          type === 'POST' &&
+            o.setRequestHead('Content-type', 'application/x-www-urlencoded')
+          o.send(type === 'POST' ? data : null)
+          o.onreadystatechange = function () {
+            if (o.readystate == 4 && o.status == 200) {
+              success(JSON.parse(o.responseText))
+              complete()
+            }
+            if (o.status == 404) {
+              error()
+              complete()
+            }
+          }
+        }
+
+        return {
+          ajax: function (opt) {
+            _doAjax(opt)
+          },
+          post: function (url, data, callback) {
+            _doAjax({
+              type: 'POST',
+              url: url,
+              data: data,
+              success: callback,
+            })
+          },
+          get: function (url, callback) {
+            _doAjax({
+              type: 'GET',
+              url: url,
+              success: callback,
+            })
+          },
+        }
+      })()
+      let opt = {
+        type: 'get',
+        url: '',
+        async: true,
+        data: { a: 1, b: 2 },
+        success: function (res) {
+          console.log(res)
+        },
+        error: function () {},
+      }
+      $.ajax(opt)
+      $.post(url, { status: 1 }, function (data) {
+        console.log(data)
+      })
+    </script>
+  </body>
+</html>
