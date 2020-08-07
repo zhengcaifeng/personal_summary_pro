@@ -9,8 +9,11 @@
   <body>
     <script>
       //array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
-
+      //必须有返回值
       // initialValue,传递给reduce的初始值
+      //total  初始值，或最后返回的值
+      //currentIndex 当前元素的索引，可选
+      //arr 当前元素所属的数组对象
       //reduce中的回调函数必须有返回值必须有返回值
 
       let person = [
@@ -25,12 +28,28 @@
       ]
 
       let obj = {}
-      person = person.reduce((cur, next) => {
-        obj[next.id] ? '' : (obj[next.id] = true && cur.push(next))
-        return cur
-      }, [])
+      //方法一
+      // person = person.reduce((cur, next) => {
+      //   obj[next.id] ? '' : (obj[next.id] = true && cur.push(next))
+      //   return cur
+      // }, [])
 
-      console.log(person)
+      //方法二
+      // let arr = []
+      // person.forEach((v) =>
+      //   obj[v.id] ? '' : (obj[v.id] = true && arr.push(v))
+      // )
+      // person = arr.map((o) => o)
+
+      //方法三
+
+      function unique(arr) {
+        const res = new Map()
+        //返回arr数组过滤后的结果，结果为一个数组   过滤条件是，如果res中没有某个键，就设置这个键的值为1
+        return arr.filter((arr) => !res.has(arr.id) && res.set(arr.id, 1))
+      }
+      unique(person)
+      console.log(unique(person))
     </script>
   </body>
 </html>
