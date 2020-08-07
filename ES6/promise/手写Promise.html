@@ -8,27 +8,33 @@
   </head>
   <body>
     <script>
-      let p = new Promise((resolve, rejecte) => {
-        setTimeout(() => {
-          resolve(1)
-        }, 0)
-      })
-      p.then(
-        (val) => {
-          console.log('任务一', val)
-        },
-        (reason) => {
-          console.log('任务二', reason)
-        }
-      )
-      p.then(
-        (val) => {
-          console.log('任务二', val)
-        },
-        (reason) => {
-          console.log('任务二', reason)
-        }
-      )
+      // let p = new Promise((resolve, rejecte) => {
+      //   setTimeout(() => {
+      //     resolve(1)
+      //   }, 0)
+      // })
+      // p.then(
+      //   (val) => {
+      //     console.log('任务一', val)
+      //   },
+      //   (reason) => {
+      //     console.log('任务二', reason)
+      //   }
+      // )
+      // p.then(
+      //   (val) => {
+      //     console.log('任务二', val)
+      //   },
+      //   (reason) => {
+      //     console.log('任务二', reason)
+      //   }
+      // )
+
+      let t1 = Promise.resolve(2),
+        t2 = Promise.reject(3),
+        t3 = Promise.reject(4)
+      let aaa = PromiseSelf.all([t1, t2, t3])
+      console.log(aaa)
     </script>
   </body>
 </html>
