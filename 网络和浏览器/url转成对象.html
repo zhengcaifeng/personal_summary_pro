@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let url =
+        'https://www.baidu.com/s?wd=%E8%87%AA%E5%AE%9A%E4%B9%89v-model&rsv_spt=1&rsv_iqid=0xabf5bdc900019a9b&issp=1&f=8&rsv_bp=1&rsv_idx=2&ie=utf-8&rqlang=cn&tn=baiduhome_pg&rsv_enter=0&rsv_dl=tb&oq=%25E5%25AD%2590%25E7%25BB%2584%25E4%25BB%25B6%25E7%259A%2584model&rsv_btype=t&inputT=5161&rsv_t=ccf336PHM5f7i7mYSEw3leLuvrhB1EmxSVLGHjthrLsDWfLecxnIKcMmpvaeDei337Xs&rsv_pq=92e914410000e6ed&rsv_sug3=37&rsv_sug1=21&rsv_sug7=101&rsv_sug2=0&rsv_sug4=5162'
+      let str = window.location.search.substring(1).split('&')
+      let obj = {}
+
+      for (let i = 0; i < str.length; i++) {}
+      str.forEach((o) => {
+        let idx = o.indexOf('=')
+        obj[o.substring(0, o.indexOf('='))] = o.substring(idx + 1)
+      })
+
+      //  方法二
+      let str = window.location.search.substring(1)
+      let r = str.replace(/&/g, '","').replace(/=/g, '":"')
+      let obj = JSON.parse('{"' + r + '"}')
+    </script>
+  </body>
+</html>

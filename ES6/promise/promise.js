@@ -39,10 +39,42 @@
       reject(error)
     }
   }
-
+  //调用.then()指定成功和失败的回调，返回一个新的promise
+  //有可能是pending状态
+  // 也有可能是resolved状态
+  // 或者rejected
   Promise.prototype.then = function (onresolved, onrejected) {
     const self = this
-    self.callbacks.push({ onresolved, onrejected })
+    // if (self.state === 'pengding') {
+    //   self.callbacks.push({ onresolved, onrejected })
+    // } else if (self.state === 'resolved') {
+    //   setTimeout(() => {
+    //     onresolved(self.data)
+    //   })
+    // } else {
+    //   //reject状态
+    //   setTimeout(() => {
+    //     onrejected(self.data)
+    //   })
+    // }
+
+    return new Promise((resolve, rejecte) => {
+      if (self.state === 'pengding') {
+        self.callbacks.push({ onresolved, onrejected })
+      } else if (self.state === 'resolved') {
+        setTimeout(() => {
+          onresolved(self.data)
+          //如果抛出异常.就会失败 reason- err
+          //如果结果不是promise类型 ，就是返回的值
+          //返回的是promise ,根据这个promise 的结果 ，
+        })
+      } else {
+        //reject状态
+        setTimeout(() => {
+          onrejected(self.data)
+        })
+      }
+    })
   }
   Promise.race = function () {}
   Promise.all = function () {}
