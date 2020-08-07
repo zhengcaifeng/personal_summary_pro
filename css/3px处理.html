@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      #box {
+        background: red;
+      }
+      .span {
+        font-size: 8px;
+        display: block;
+      }
+      span {
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    //块元素中于行内元素，出现3px的差距怎么解决
+    //原因：主要是因为图片的垂直对齐方式vertical-align引发的，默认值是baseline，默认为此值时图片下方就会多出3px。
+    <div id="box">
+      <img src="../原型/1.jpg" />
+      <span class="span">我是中国人</span>
+      <span>我是日本人</span>
+    </div>
+  </body>
+</html>
+
+<!-- //设置 外层元素的font-size:0 
+  //把行内元素转成块元素 display:block 
+  //行内元素添加vertical-align:top -->

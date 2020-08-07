@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <p>5中 div水平垂直居中</p>
+    </div>
+  </body>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background: red;
+    }
+    p {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+    }
+    /*    
+    div {
+      position: relative;     
+    }
+
+    p {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;     
+    } */
+
+    /* flex布局 */
+
+    /* div {
+      display: table-cell;
+      vertical-align: middle;
+    }
+    p {
+      margin: auto;
+    } */
+
+    /* div {
+      overflow: hidden;
+    }
+    p {
+      margin: auto;
+      margin-top: 50px;
+    } */
+
+    div {
+      position: relative;
+    }
+    p {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* div {
+      position: relative;
+    }
+    p {
+      position: absolute;
+      left: calc(50% - 50px);
+      top: calc(50% - 50px);
+      left: 50%;
+      top: 50%;
+      margin-left: -50px;
+      margin-top: -50px;
+    } */
+  </style>
+</html>

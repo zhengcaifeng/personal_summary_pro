@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <div onclick="console.log(11)">111</div> -->
+    <div>22</div>
+  </body>
+  <script>
+    var oDiv = document.getElementsByTagName('div')[0]
+    // oDiv.onclick = function () {
+    //   console.log(222)
+    // }
+    //removeEventListener
+    oDiv.addEventListener(
+      'click',
+      function () {
+        console.log(333)
+      },
+      false
+    )
+
+    function adddom(target, enentType, handle) {
+      if (target.addEventListener) {
+        target.addEventListener(dom, handle, false)
+      }esle{
+        target.attachEvent('on'+dom,handle)
+      }
+    }
+
+    eventListener={
+      addEvent:function(target,type,handle){
+        try {
+          target.addEventListener(type,handle,false)
+        } catch (error) {
+          try {
+            target.attachEvent('on'+type,handle)
+          } catch (error) {
+            target['on'+type]=handle
+          }
+        }
+      },
+      removeEvent:function(target,type,handle){
+        try {
+          target.removeEventListener(type,handle,false)
+        } catch (error) {
+          try {
+            target.detachEvent('on'+type,handle)
+          } catch (error) {
+              target['on'+type]=null
+          }
+        }
+      }
+    }
+  </script>
+</html>
