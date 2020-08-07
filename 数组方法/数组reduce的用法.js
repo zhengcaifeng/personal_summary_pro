@@ -10,7 +10,7 @@ var arr = [1, 2, 3, 4, 4, 3, 3]
 
 // var product = arr.reduce((pre, cur) => pre * cur, 1)
 // console.log(product, '==')
-
+//数组对象去重
 let arr1 = ['aa', 'bb', 'a', 'b', 'aa', 'bb', 'aa']
 let arr2 = [
   {
