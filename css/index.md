@@ -37,3 +37,12 @@ CSS 优先规则 4：计算选择符中 ID 选择器的个数
 （c）。按 a、b、c 的顺序依次比较大小，大的则优先级高，相等则比较下一个。
 若最后两个的选择符中 a、b、c 都相等，则按照"就近原则"来判断。
 CSS 优先规则 5：属性后插有 !important 的属性拥有最高优先级。若同时插有 !important，则再利用规则 3、4 判断优先级。
+
+display 的属性 inline inline-block block table table-cel none
+
+box-size:border-box
+content-box
+
+box-sizing: content-box | border-box | inherit
+他们的主要区别其实就是 width 包不包含 border 和 padding
+box-sizing 默认值是 content-box，即默认是标准盒子模型 content（不包含 padding 和 border）
