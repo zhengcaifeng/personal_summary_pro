@@ -128,3 +128,17 @@ var funcanme=req.query.callback;
 3)vue 的反向代理
 在 vue.config 中配置 proxy
 后端 nginx 反向代理
+
+#### 12.http 和 https 的区别
+
+https 是超文本安全传输协议
+
+在 http 上添加了 ssl/xls 的加密
+默认 端口 http 80 https 443 ftp 20 21
+https 需要申请证书 同是是 加密传输 而 http 是明文传输
+
+#### 13.http1.0 和 http2.0 的区别
+
+http1.0 是一个请求一个响应 解析为 文本传输
+http2.o 是 多个请求可同时发送
+解析为 二进制流传输
