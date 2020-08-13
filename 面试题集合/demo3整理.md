@@ -15,9 +15,6 @@ b()
 
 闭包闭包是指有权访问另一个函数作用域中的变量的函数。functionsayHi(name){return()=>{console.log(`Hi!${name}`)}}consttest=sayHi('xiaoming')test()//Hi!xiaoming 虽然 sayHi 函数已经执行完毕，但是其活动对象也不会被销毁，因为 test 函数仍然引用着 sayHi 函数中的变量 name，这就是闭包。但也因为闭包引用着另一个函数的变量，导致另一个函数已经不使用了也无法销毁，所以闭包使用过多，会占用较多的内存，这也是一个副作用。原型及原型链所有的 JS 对象都有一个 prototype 属性，指向它的原型对象。当试图访问一个对象的属性时，如果没有在该对象上找到，它还会搜寻该对象的原型，以及该对象的原型的原型，依次层层向上搜索，直到找到一个名字匹配的属性或到达原型链的末尾。前端面试题
 
-es6 中数组方法  
-keys values inclueds Array.from() find
-
 对象
 
 函数 箭头函数
@@ -44,6 +41,3 @@ http 无状态
 url
 
 浏览器渲染过程，css 优先级，跨越，，h5 适配，ssr 攻击，webscket，网络协议，dom 事件，事件流，
-
-说一下你对 promise 的理解
-promise 是具体来说就是一个构造函数，是 js 解决异步执行的新方法，在功能上常见 promise 对象封装一个异步操作并获取其结果
